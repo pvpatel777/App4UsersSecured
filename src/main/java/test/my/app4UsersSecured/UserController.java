@@ -65,7 +65,8 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		logger.debug("createUser");
 		if (user != null && user.getId() == null) {
-			ResponseEntity.status(HttpStatus.OK).body(userRepo.save(user));
+			return ResponseEntity.status(HttpStatus.OK)
+					.body(userRepo.save(user));
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 	}
